@@ -1,0 +1,35 @@
+{
+    "name": "shykat199/webpbolt",
+    "description": "Convert JPG, PNG, GIF and BMP images to WebP fast. Lightweight, zero dependencies, powered by PHP GD.",
+    "type": "library",
+    "keywords": [
+        "webp",
+        "image",
+        "converter",
+        "image-conversion",
+        "jpg-to-webp",
+        "png-to-webp",
+        "gd",
+        "optimization",
+        "compression",
+        "php"
+    ],
+    "homepage": "https://github.com/shykat199/webpbolt",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shykat",
+            "email": "you@example.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "ext-gd": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shykat\\WebpBolt\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
