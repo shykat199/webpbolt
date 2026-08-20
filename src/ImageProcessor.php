@@ -76,7 +76,20 @@ class ImageProcessor
     public function toWebp(string $sourcePath, ?string $destinationPath = null, int $quality = 80): string
     {
         $encoder = new WebpEncoder($quality);
-        $destinationPath ??= preg_replace('/\.[^.\/\\\\]+$/', '.' . $encoder->extension(), $sourcePath);
+
+        if ($destinationPath === null) {
+            $destinationPath = preg_replace(
+                '/\.[^.\/\\\\]+$/',
+                '.' . $encoder->extension(),
+                $sourcePath
+            );
+
+            // No extension on the source (or already .webp) means the regex
+            // returned the path unchanged — writing there destroys the original.
+            if ($destinationPath === $sourcePath) {
+                $destinationPath = $sourcePath . '.' . $encoder->extension();
+            }
+        }
 
         return $this->save($sourcePath, $destinationPath, $encoder);
     }

@@ -28,9 +28,8 @@ class WebpEncoder implements EncoderInterface
 
     public function encode(GdImage $image, string $destinationPath): bool
     {
-        // Preserve transparency in the output.
         imagepalettetotruecolor($image);
-        imagealphablending($image, true);
+        imagealphablending($image, false);   // was true — must be false to save alpha
         imagesavealpha($image, true);
 
         return imagewebp($image, $destinationPath, $this->quality);
