@@ -5,6 +5,7 @@
     "keywords": [
         "webp",
         "image",
+        "watermark",
         "converter",
         "image-conversion",
         "jpg-to-webp",
@@ -12,6 +13,7 @@
         "gd",
         "optimization",
         "compression",
+        "laravel",
         "php"
     ],
     "homepage": "https://github.com/shykat199/webpbolt",
@@ -23,13 +25,44 @@
         }
     ],
     "require": {
-        "php": ">=8.0",
+        "php": "^8.1",
         "ext-gd": "*"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.34",
+        "illuminate/console": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0"
+    },
+    "suggest": {
+        "ext-exif": "Needed by the AutoOrient transform to read rotation from phone photos",
+        "illuminate/support": "Enables Laravel auto-discovery, config publishing and the images:webp command"
     },
     "autoload": {
         "psr-4": {
             "Shykat\\WebpBolt\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "autoload-dev": {
+        "psr-4": {
+            "Shykat\\WebpBolt\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Shykat\\WebpBolt\\Laravel\\WebpBoltServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Shykat\WebpBolt;
 
 use RuntimeException;
+use Shykat\WebpBolt\Exceptions\EncodingFailedException;
 use Shykat\WebpBolt\Contracts\EncoderInterface;
 use Shykat\WebpBolt\Contracts\TransformInterface;
 use Shykat\WebpBolt\Encoders\WebpEncoder;
@@ -63,7 +64,7 @@ class ImageProcessor
         imagedestroy($image);
 
         if (!$ok) {
-            throw new RuntimeException('Failed to write the output file.');
+            throw new EncodingFailedException('Failed to write the output file.');
         }
 
         return $destinationPath;
